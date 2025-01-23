@@ -1,1 +1,9 @@
-\contentsline {section}{\numberline {1}Problem Statement}{2}{section.1}%
+\contentsline {section}{\numberline {1}Task Overview --Item 2}{2}{section.1}%
+\contentsline {section}{\numberline {2}Task Definition --Item 3}{2}{section.2}%
+\contentsline {section}{\numberline {3}Data Source and Plan for Data Collection --Item 4}{2}{section.3}%
+\contentsline {section}{\numberline {4}Dataset Details --Item 5}{2}{section.4}%
+\contentsline {section}{\numberline {5}Team Contract --Item 6}{2}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Team Purpose}{2}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Team Member Roles}{2}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Facilitation Activities}{2}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Anything Else?}{2}{subsection.5.4}%
