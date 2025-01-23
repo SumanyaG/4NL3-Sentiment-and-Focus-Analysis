@@ -140,6 +140,7 @@ INPUT ./TeamProposal.lof
 INPUT ./TeamProposal.lof
 INPUT TeamProposal.lof
 OUTPUT TeamProposal.lof
+INPUT /usr/local/texlive/2024basic/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT TeamProposal.aux
 INPUT ./TeamProposal.out
 INPUT ./TeamProposal.out
