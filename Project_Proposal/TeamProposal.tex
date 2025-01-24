@@ -47,11 +47,34 @@
 % relevant details.
 
 \section{Dataset Details --Item 5}
-% Expected size of the dataset (number of data points) and 3 example data 
-% points with labe;s assigned by your group. Should ideally have enough data 
-% for several hours of annotation. This corresponds to a few thousand data 
-% points.
+\indent A data point will be considered a single paragraph of a response to an interview question by a player or coach. 
+For each event, we will look at each and every day of interview recordings that are tracked. The events covered 
+this time will be the entirety of both NBA and WNBA Finals, as well as both NBA and WNBA Drafts. Based on these 
+events, there are a total of 17 days of interviews. Furthermore, each recording day has interviews from multiple 
+different players and coaches that each answer questions with either a one or multi-paragraph response. Based on 
+this information, our dataset is expected to contain approximately 2500 data points.
+\newline \newline
+\indent The following is a set of 3 data points taken from the Game 2 Postgame interview with Jason Kidd of the Dallas 
+Mavericks:
+\begin{enumerate}
+    \item Yeah, we are not down. We're positive. This is a group that believes. We didn't get an opportunity to get a 
+    split or win two here on the road. Now Boston held serve. Now we've got to go home and hold serve.
+    \begin{itemize}
+        \item \textbf{Assigned Labels: Positive, Team}
+    \end{itemize}
 
+    \item Big. The small things, you know, we have to do the small things, and that's part of the game. Those are points 
+    that we left on the board, and we didn't shoot free throws well tonight, and we have to be better.
+    \begin{itemize}
+        \item \textbf{Assigned Labels: Negative, Team}
+    \end{itemize}
+
+    \item Yeah, I think Luka is a special player. He's one of, if not the best player in the world, and he causes a problem. 
+    He's able to find guys. Again, creating open opportunities, and we just didn't take advantage of it.
+    \begin{itemize}
+        \item \textbf{Assigned Labels: Positive, Individual}
+    \end{itemize}
+\end{enumerate}
 \section{Team Contract --Item 6}
 % Description of the expectations and/or roles that team members agree upon 
 % for the semester. Part of final project grade will be based on whether 
@@ -69,7 +92,7 @@
 \subsection{Facilitation Activities}
 % How will the team handle the leadership/facilitation/management activities?
 
-\subsection{Anything Else?}
+\subsection{Anything Else???}
 % Anything else we think will be helpful to set the group expectations.
 % Print name, sign and date.
 
