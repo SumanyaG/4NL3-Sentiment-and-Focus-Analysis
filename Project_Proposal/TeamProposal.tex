@@ -8,7 +8,8 @@
 \usepackage{float}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 
-\title{COMPSCI 4NL3: Natural Language Processing\\Team Proposal}
+\title{COMPSCI 4NL3: Natural Language Processing\\
+Team Proposal}
 
 \author{Team 4\\
 \\ Junnan Li
@@ -21,41 +22,69 @@
 \begin{document}
 
 \begin{titlepage}
-    \maketitle
+  \maketitle
 \end{titlepage}
 
 \newpage 
 
 \tableofcontents
 \listoftables
-\listoffigures
 
 \newpage
 
-% Note that I am copying over the sections just as they are mentioned in the 
-% instructions document. Feel free to change them up as you want.
-
-\section{Task Overview --Item 2}
+\section{Task Overview}
 % Include title, significance and what makes it challenging.
+This project, titled \textbf{`Sentiment and Focus Analysis in Post-Game Interviews'} aims to analyze post-game 
+interview responses from players and coaches to gain insights into their communication styles and focus areas.
+By examining these responses, we seek to classify each statement along two axes:
 
-\section{Task Definition --Item 3}
-% Type of data, classification or regression, number of classes, single label
-% or multi-label.
+\begin{enumerate}
+  \item Whether the response focuses on the \emph{individual (self)} or the \emph{team}.
+  \item Whether the sentiment expressed is \emph{positive} or \emph{negative}.
+\end{enumerate}
 
-\section{Data Source and Plan for Data Collection --Item 4}
+This analysis will shed light on how players and coaches emphasize teamwork or individual performance and how their
+sentiments vary depending on the context. The results can contribute to a deeper understanding of communication
+patterns within sports and their alignment with team dynamics and morale.\\
+
+The project poses several challenges:
+\begin{itemize}
+  \item \textbf{Ambiguity in Language}: Responses often contain nuanced phrasing or implicit meanings 
+  that make it difficult to determine focus or sentiment.
+  \item \textbf{Overlapping Categories}: Some responses may include references to both individual and 
+  team efforts, requiring careful textual interpretation.
+\end{itemize}
+
+Addressing these challenges will require careful preprocessing, robus labelling criteria and advanced
+modelling techniques to ensure meaningful and reliable classifications.
+
+\section{Task Definition}
+This project involves a \textbf{multi-label classification task} where each data point is assigned two binary 
+labels:
+
+\begin{itemize}
+  \item \textbf{Focus}: 2 classes (Individual, Team)
+  \item \textbf{Sentiment}: 2 classes (Positive, Negative)
+\end{itemize}
+
+Sample annotations incldue ``Positive, Team'', ``Negative, Individual'', ``Positive, Individual'' and ``Negative, Team''.
+
+\section{Data Source and Plan for Data Collection}
 % May include how we are going to scrape the data and follow terms-of-service,
 % API access and handling rate limiting, using open source data or any other 
 % relevant details.
-Our data will be interview transcripts on asapsports.com, specifically the responses given by the interviewees 
+Our data will be interview transcripts on \href{https://asapsports.com/}{asapsports.com}, specifically the responses given by the interviewees 
 (players and/or coaches). We will write an automated web scraping script in Python to collect the transcript text.\\
+
 \indent There is neither a terms of service nor a Robots Exclusion Protocol (robots.txt) file on the website, likely 
 because the website doesn’t get a lot of traffic. Since this is publicly available data taken from interviews, the 
 biggest concern would be rate limiting. We would only need to scrape about 100 transcripts to meet our required number 
 of data points, thus we can just limit the number of requests per second to not overload their servers.\\
+
 \indent After tokenizing and removing unecessary information (e.g. interviewee name) we can store the corpus in a 
 single file or multiple files for labelling purposes.
 
-\section{Dataset Details --Item 5}
+\section{Dataset Details}
 \indent A data point will be considered a single paragraph of a response to an interview question by a player or coach. 
 For each event, we will look at each and every day of interview recordings that are tracked. The events covered 
 this time will be the entirety of both NBA and WNBA Finals, as well as both NBA and WNBA Drafts. Based on these 
@@ -84,12 +113,14 @@ Mavericks:
         \item \textbf{Assigned Labels: Positive, Individual}
     \end{itemize}
 \end{enumerate}
-\section{Team Contract --Item 6}
+
+\section{Team Contract}
 % Description of the expectations and/or roles that team members agree upon 
 % for the semester. Part of final project grade will be based on whether 
 % the teammates agree that we followed this contract. It should specify the
 % overall purpose of the team, the responsibilities and the ground rules
 % the team members agree to follow.
+This section outlines the expected team dynamic and roles/responsibilities of each team member.
 
 \subsection{Team Purpose}
 Our team's purpose is to analyze and interpret communication dynamics
@@ -108,15 +139,13 @@ This section details rules and expectations every team member agrees to.
   \item Team members are expected to come to meetings prepared, having
     completed any previously assigned tasks or research. An agenda will
     be shared at the start of the
-    meeting in the first five minutes, and everyone should agree to their
-    assigned tasks.
+    meeting in the first five minutes.
   \item Attendance (either in person or virtual) is mandatory for all
     scheduled meetings and
     work periods unless a valid reason is provided. Active participation
     and engagement
-    during the meeting are expected from everyone.
-  \item Meetings will be held once a week for 60–90 minutes (about one and
-    a half hours),
+    during the meeting is expected from everyone.
+  \item Meetings will be held once a week for 60 (time limit open to extension based on each member's availability),
     with additional work periods scheduled as needed. Any changes to
     the schedule
     will be agreed upon by the team. Meetings will be held every Thursday
@@ -124,7 +153,7 @@ This section details rules and expectations every team member agrees to.
     3:30 pm EST in person, unless agreed upon otherwise.
   \item The primary communication platform will be a Teams group chat. All team
     members are expected to check and respond to messages within 24
-    hours. Urgent
+    hours during weekdays and 48 hours during weekends. Urgent
     matters should be flagged for immediate attention.
   \item All work submitted should meet the agreed-upon standards of
     quality and be
@@ -135,8 +164,7 @@ This section details rules and expectations every team member agrees to.
     reached, the team will vote on the issue. In case of a tie or
     unresolved conflict, the
     teaching assistant and/or the professor will have the final say after
-    considering all
-    input.
+    considering all opinions.
   \item Team members will communicate respectfully and
     professionally, both during
     meetings and in written correspondence. Constructive feedback is encouraged,
@@ -149,7 +177,9 @@ leadership, facilitation, and management activities to ensure smooth
 operations and the achievement of objectives. Leadership roles will
 be clearly defined, with a focus on fostering open communication,
 delegation of responsibilities, and promoting accountability among
-all team members. Facilitation will involve regular meetings to align
+all team members.\\
+
+Facilitation will involve regular meetings to align
 on goals, review progress, and address challenges collectively,
 ensuring everyone’s voice is heard and valued. Management activities
 will include maintaining a clear workflow, tracking deliverables
@@ -157,7 +187,11 @@ through project management tools like GitHub, and encouraging
 continuous feedback for improvement. The leadership approach will
 emphasize adaptability, teamwork, and proactive problem-solving to
 ensure the team remains aligned, motivated, and effective in
-achieving its purpose.
+achieving its purpose.\\
+
+For equal distirbution of work, the leadership role will be rotated among
+all team members over the course of the semester ensuring, each team member is 
+awarded the opportunity to be in the role once over the span of the project.
 
 \subsection{Procedure for Meeting Unmet Expectations}
 If the work cannot be completed to the team’s standard, the team
@@ -165,7 +199,7 @@ member responsible
 must either provide a clear explanation or take steps to improve and
 resubmit the work to
 meet the required quality.
-The steps outlined for raising and discussing concerns includes:
+The steps outlined for raising and discussing concerns include:
 \begin{enumerate}
   \item Defining the root of the problem and describing the conflict.
   \item Recognizing different viewpoints for all parties or areas
@@ -174,16 +208,15 @@ The steps outlined for raising and discussing concerns includes:
   \item Developing a plan that both parties can agree on, addressing
     the main issue.
   \item Agreeing on a plan of action to reach an agreement.
-  \item Having a postmortem (monitoring and following up on the resolution
-    progress) to
-    identify the actions leading up to the conflict.
+  \item Monitoring and following up on the resolution
+    progress to identify the actions leading up after the conflict.
 \end{enumerate}
 
 The leader and/or mediator must be an individual that is not involved
-with the conflict. They will ensure that everyone’s voices are heard,
+in the conflict. They will ensure that everyone’s voices are heard,
 while making sure
 that there is an equal
-and balanced discussion. A space should be made where everyone’s
+and balanced discussion. A space should be fostered where everyone’s
 voices are heard and
 respected in an equal manner that is fair to all. In addition, they
 must be empathetic about
@@ -245,21 +278,21 @@ respectful.
 \newpage
 \section{Team Contract Agreement}
 All team members are responsible for performing the required work
-outlined in each
-milestone honestly, without plagiarism and cheating. Submitting this
-work with my
-name and macID is a statement and understanding that this work is my own and
-adheres to the Academic Integrity Policy of McMaster University.
-If you agree to terms above, please sign below in the designated area by printing your full name:
-\begin{table}[]
+outlined in each milestone honestly, without plagiarism and cheating.\\
+
+This is a reminder that submitting this work with your name and macID is a statement 
+and understanding that this work is your own and adheres to the Academic Integrity Policy 
+of McMaster University. If you agree to terms above, please sign below in the designated 
+area by printing your full name:
+\begin{table}[H]
     \centering
     \begin{tabular}{|l|l|}
     \hline
-    macID   & Full Name as Signature \\ \hline
+    \textbf{macID} & \textbf{Full Name as Signature} \\ \hline
     fatimn8 & Nawaal Fatima          \\ \hline
     lij499  &                        \\ \hline
     bhuiyr2 &                        \\ \hline
-    gulats10&                        \\ \hline
+    gulats10 & Sumanya Gulati         \\ \hline
     \end{tabular}
     \caption{Team Contract Agreement Signatures}
     \label{tab:team-signatures}
