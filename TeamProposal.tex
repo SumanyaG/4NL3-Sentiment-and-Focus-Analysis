@@ -45,6 +45,9 @@
 % May include how we are going to scrape the data and follow terms-of-service,
 % API access and handling rate limiting, using open source data or any other 
 % relevant details.
+Our data will be interview transcripts on asapsports.com, specifically the responses given by the interviewees (players and/or coaches). We will write an automated web scraping script in Python to collect the transcript text.\\
+\tab There is neither a terms of service nor a Robots Exclusion Protocol (robots.txt) file on the website, likely because the website doesn’t get a lot of traffic. Since this is publicly available data taken from interviews, the biggest concern would be rate limiting. We would only need to scrape about 100 transcripts to meet our required number of data points, thus we can just limit the number of requests per second to not overload their servers.\\
+\tab After tokenizing and removing unecessary information (e.g. interviewee name) we can store the corpus in a single file or multiple files for labelling purposes.
 
 \section{Dataset Details --Item 5}
 % Expected size of the dataset (number of data points) and 3 example data 
