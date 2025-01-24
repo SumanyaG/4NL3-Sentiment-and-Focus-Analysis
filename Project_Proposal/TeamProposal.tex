@@ -6,42 +6,25 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{float}
-<<<<<<< HEAD
 \newcommand\tab[1][1cm]{\hspace*{#1}}
-=======
->>>>>>> origin/main
 
 \title{COMPSCI 4NL3: Natural Language Processing\\Team Proposal}
 
 \author{Team 4\\
-<<<<<<< HEAD
 \\ Junnan Li
 \\ Nawaal Fatima
 \\ Rashad Bhuiyan
 \\ Sumanya Gulati}                  
-=======
-  \\ Junnan Li
-  \\ Nawaal Fatima
-  \\ Rashad Bhuiyan
-\\ Sumanya Gulati}
->>>>>>> origin/main
 
 \date{24 January 2025}
 
 \begin{document}
 
 \begin{titlepage}
-<<<<<<< HEAD
     \maketitle
 \end{titlepage}
 
 \newpage 
-=======
-  \maketitle
-\end{titlepage}
-
-\newpage
->>>>>>> origin/main
 
 \tableofcontents
 \listoftables
@@ -49,11 +32,7 @@
 
 \newpage
 
-<<<<<<< HEAD
 % Note that I am copying over the sections just as they are mentioned in the 
-=======
-% Note that I am copying over the sections just as they are mentioned in the
->>>>>>> origin/main
 % instructions document. Feel free to change them up as you want.
 
 \section{Task Overview --Item 2}
@@ -65,12 +44,16 @@
 
 \section{Data Source and Plan for Data Collection --Item 4}
 % May include how we are going to scrape the data and follow terms-of-service,
-<<<<<<< HEAD
 % API access and handling rate limiting, using open source data or any other 
 % relevant details.
-Our data will be interview transcripts on asapsports.com, specifically the responses given by the interviewees (players and/or coaches). We will write an automated web scraping script in Python to collect the transcript text.\\
-\indent There is neither a terms of service nor a Robots Exclusion Protocol (robots.txt) file on the website, likely because the website doesn’t get a lot of traffic. Since this is publicly available data taken from interviews, the biggest concern would be rate limiting. We would only need to scrape about 100 transcripts to meet our required number of data points, thus we can just limit the number of requests per second to not overload their servers.\\
-\indent After tokenizing and removing unecessary information (e.g. interviewee name) we can store the corpus in a single file or multiple files for labelling purposes.
+Our data will be interview transcripts on asapsports.com, specifically the responses given by the interviewees 
+(players and/or coaches). We will write an automated web scraping script in Python to collect the transcript text.\\
+\indent There is neither a terms of service nor a Robots Exclusion Protocol (robots.txt) file on the website, likely 
+because the website doesn’t get a lot of traffic. Since this is publicly available data taken from interviews, the 
+biggest concern would be rate limiting. We would only need to scrape about 100 transcripts to meet our required number 
+of data points, thus we can just limit the number of requests per second to not overload their servers.\\
+\indent After tokenizing and removing unecessary information (e.g. interviewee name) we can store the corpus in a 
+single file or multiple files for labelling purposes.
 
 \section{Dataset Details --Item 5}
 \indent A data point will be considered a single paragraph of a response to an interview question by a player or coach. 
@@ -104,77 +87,11 @@ Mavericks:
 \section{Team Contract --Item 6}
 % Description of the expectations and/or roles that team members agree upon 
 % for the semester. Part of final project grade will be based on whether 
-=======
-% API access and handling rate limiting, using open source data or any other
-% relevant details.
-
-\section{Dataset Details --Item 5}
-\indent A data point will be considered a single paragraph of a
-response to an interview question by a player or coach.
-For each event, we will look at each and every day of interview
-recordings that are tracked. The events covered
-this time will be the entirety of both NBA and WNBA Finals, as well
-as both NBA and WNBA Drafts. Based on these
-events, there are a total of 17 days of interviews. Furthermore, each
-recording day has interviews from multiple
-different players and coaches that each answer questions with either
-a one or multi-paragraph response. Based on
-this information, our dataset is expected to contain approximately
-2500 data points.
-\newline \newline
-\indent The following is a set of 3 data points taken from the Game 2
-Postgame interview with Jason Kidd of the Dallas
-Mavericks:
-\begin{enumerate}
-  \item Yeah, we are not down. We're positive. This is a group that
-    believes. We didn't get an opportunity to get a
-    split or win two here on the road. Now Boston held serve. Now
-    we've got to go home and hold serve.
-    \begin{itemize}
-      \item \textbf{Assigned Labels: Positive, Team}
-    \end{itemize}
-
-  \item Big. The small things, you know, we have to do the small
-    things, and that's part of the game. Those are points
-    that we left on the board, and we didn't shoot free throws well
-    tonight, and we have to be better.
-    \begin{itemize}
-      \item \textbf{Assigned Labels: Negative, Team}
-    \end{itemize}
-
-  \item Yeah, I think Luka is a special player. He's one of, if not
-    the best player in the world, and he causes a problem.
-    He's able to find guys. Again, creating open opportunities, and
-    we just didn't take advantage of it.
-    \begin{itemize}
-      \item \textbf{Assigned Labels: Positive, Individual}
-    \end{itemize}
-\end{enumerate}
-\section{Team Contract --Item 6}
-% Description of the expectations and/or roles that team members agree upon
-% for the semester. Part of final project grade will be based on whether
->>>>>>> origin/main
 % the teammates agree that we followed this contract. It should specify the
 % overall purpose of the team, the responsibilities and the ground rules
 % the team members agree to follow.
 
 \subsection{Team Purpose}
-<<<<<<< HEAD
-% What is our team's purpose or mission?
-
-\subsection{Team Member Roles}
-% What are the duties/roles of each team member? What is expected of each 
-% team member?
-
-\subsection{Facilitation Activities}
-% How will the team handle the leadership/facilitation/management activities?
-
-\subsection{Anything Else???}
-% Anything else we think will be helpful to set the group expectations.
-% Print name, sign and date.
-
-\end{document}
-=======
 Our team's purpose is to analyze and interpret communication dynamics
 within sports contexts to gain insights into individual and
 team-focused behaviors and sentiments. By classifying responses and
@@ -349,4 +266,3 @@ If you agree to terms above, please sign below in the designated area by printin
     \end{table}
 
 \end{document}
->>>>>>> origin/main
