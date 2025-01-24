@@ -10,20 +10,20 @@
 \title{COMPSCI 4NL3: Natural Language Processing\\Team Proposal}
 
 \author{Team 4\\
-\\ Junnan Li
-\\ Nawaal Fatima
-\\ Rashad Bhuiyan
-\\ Sumanya Gulati}                  
+  \\ Junnan Li
+  \\ Nawaal Fatima
+  \\ Rashad Bhuiyan
+\\ Sumanya Gulati}
 
 \date{24 January 2025}
 
 \begin{document}
 
 \begin{titlepage}
-    \maketitle
+  \maketitle
 \end{titlepage}
 
-\newpage 
+\newpage
 
 \tableofcontents
 \listoftables
@@ -31,7 +31,7 @@
 
 \newpage
 
-% Note that I am copying over the sections just as they are mentioned in the 
+% Note that I am copying over the sections just as they are mentioned in the
 % instructions document. Feel free to change them up as you want.
 
 \section{Task Overview --Item 2}
@@ -43,57 +43,230 @@
 
 \section{Data Source and Plan for Data Collection --Item 4}
 % May include how we are going to scrape the data and follow terms-of-service,
-% API access and handling rate limiting, using open source data or any other 
+% API access and handling rate limiting, using open source data or any other
 % relevant details.
 
 \section{Dataset Details --Item 5}
-\indent A data point will be considered a single paragraph of a response to an interview question by a player or coach. 
-For each event, we will look at each and every day of interview recordings that are tracked. The events covered 
-this time will be the entirety of both NBA and WNBA Finals, as well as both NBA and WNBA Drafts. Based on these 
-events, there are a total of 17 days of interviews. Furthermore, each recording day has interviews from multiple 
-different players and coaches that each answer questions with either a one or multi-paragraph response. Based on 
-this information, our dataset is expected to contain approximately 2500 data points.
+\indent A data point will be considered a single paragraph of a
+response to an interview question by a player or coach.
+For each event, we will look at each and every day of interview
+recordings that are tracked. The events covered
+this time will be the entirety of both NBA and WNBA Finals, as well
+as both NBA and WNBA Drafts. Based on these
+events, there are a total of 17 days of interviews. Furthermore, each
+recording day has interviews from multiple
+different players and coaches that each answer questions with either
+a one or multi-paragraph response. Based on
+this information, our dataset is expected to contain approximately
+2500 data points.
 \newline \newline
-\indent The following is a set of 3 data points taken from the Game 2 Postgame interview with Jason Kidd of the Dallas 
+\indent The following is a set of 3 data points taken from the Game 2
+Postgame interview with Jason Kidd of the Dallas
 Mavericks:
 \begin{enumerate}
-    \item Yeah, we are not down. We're positive. This is a group that believes. We didn't get an opportunity to get a 
-    split or win two here on the road. Now Boston held serve. Now we've got to go home and hold serve.
+  \item Yeah, we are not down. We're positive. This is a group that
+    believes. We didn't get an opportunity to get a
+    split or win two here on the road. Now Boston held serve. Now
+    we've got to go home and hold serve.
     \begin{itemize}
-        \item \textbf{Assigned Labels: Positive, Team}
+      \item \textbf{Assigned Labels: Positive, Team}
     \end{itemize}
 
-    \item Big. The small things, you know, we have to do the small things, and that's part of the game. Those are points 
-    that we left on the board, and we didn't shoot free throws well tonight, and we have to be better.
+  \item Big. The small things, you know, we have to do the small
+    things, and that's part of the game. Those are points
+    that we left on the board, and we didn't shoot free throws well
+    tonight, and we have to be better.
     \begin{itemize}
-        \item \textbf{Assigned Labels: Negative, Team}
+      \item \textbf{Assigned Labels: Negative, Team}
     \end{itemize}
 
-    \item Yeah, I think Luka is a special player. He's one of, if not the best player in the world, and he causes a problem. 
-    He's able to find guys. Again, creating open opportunities, and we just didn't take advantage of it.
+  \item Yeah, I think Luka is a special player. He's one of, if not
+    the best player in the world, and he causes a problem.
+    He's able to find guys. Again, creating open opportunities, and
+    we just didn't take advantage of it.
     \begin{itemize}
-        \item \textbf{Assigned Labels: Positive, Individual}
+      \item \textbf{Assigned Labels: Positive, Individual}
     \end{itemize}
 \end{enumerate}
 \section{Team Contract --Item 6}
-% Description of the expectations and/or roles that team members agree upon 
-% for the semester. Part of final project grade will be based on whether 
+% Description of the expectations and/or roles that team members agree upon
+% for the semester. Part of final project grade will be based on whether
 % the teammates agree that we followed this contract. It should specify the
 % overall purpose of the team, the responsibilities and the ground rules
 % the team members agree to follow.
 
 \subsection{Team Purpose}
-% What is our team's purpose or mission?
+Our team's purpose is to analyze and interpret communication dynamics
+within sports contexts to gain insights into individual and
+team-focused behaviors and sentiments. By classifying responses and
+identifying patterns, we aim to enhance understanding of team
+dynamics, promote collaboration, and support decision-making that
+drives collective success. Through this, we contribute to fostering a
+positive, cohesive environment where both individual strengths and
+team goals are harmoniously aligned.
 
-\subsection{Team Member Roles}
-% What are the duties/roles of each team member? What is expected of each 
-% team member?
+\subsection{Team Member Roles and Responsibilities}
+This section details rules and expectations every team member agrees to.
+
+\begin{itemize}
+  \item Team members are expected to come to meetings prepared, having
+    completed any previously assigned tasks or research. An agenda will
+    be shared at the start of the
+    meeting in the first five minutes, and everyone should agree to their
+    assigned tasks.
+  \item Attendance (either in person or virtual) is mandatory for all
+    scheduled meetings and
+    work periods unless a valid reason is provided. Active participation
+    and engagement
+    during the meeting are expected from everyone.
+  \item Meetings will be held once a week for 60–90 minutes (about one and
+    a half hours),
+    with additional work periods scheduled as needed. Any changes to
+    the schedule
+    will be agreed upon by the team. Meetings will be held every Thursday
+    from 2:30 to
+    3:30 pm EST in person, unless agreed upon otherwise.
+  \item The primary communication platform will be a Teams group chat. All team
+    members are expected to check and respond to messages within 24
+    hours. Urgent
+    matters should be flagged for immediate attention.
+  \item All work submitted should meet the agreed-upon standards of
+    quality and be
+    completed on time. Team members are responsible for proofreading their
+    work and ensuring it aligns with the project’s goals before submission.
+  \item Decisions will be made by consensus whenever possible. If
+    consensus cannot be
+    reached, the team will vote on the issue. In case of a tie or
+    unresolved conflict, the
+    teaching assistant and/or the professor will have the final say after
+    considering all
+    input.
+  \item Team members will communicate respectfully and
+    professionally, both during
+    meetings and in written correspondence. Constructive feedback is encouraged,
+    and all opinions should be valued and considered.
+\end{itemize}
 
 \subsection{Facilitation Activities}
-% How will the team handle the leadership/facilitation/management activities?
+The team will adopt a collaborative and structured approach to
+leadership, facilitation, and management activities to ensure smooth
+operations and the achievement of objectives. Leadership roles will
+be clearly defined, with a focus on fostering open communication,
+delegation of responsibilities, and promoting accountability among
+all team members. Facilitation will involve regular meetings to align
+on goals, review progress, and address challenges collectively,
+ensuring everyone’s voice is heard and valued. Management activities
+will include maintaining a clear workflow, tracking deliverables
+through project management tools like GitHub, and encouraging
+continuous feedback for improvement. The leadership approach will
+emphasize adaptability, teamwork, and proactive problem-solving to
+ensure the team remains aligned, motivated, and effective in
+achieving its purpose.
 
-\subsection{Anything Else???}
-% Anything else we think will be helpful to set the group expectations.
-% Print name, sign and date.
+\subsection{Procedure for Meeting Unmet Expectations}
+If the work cannot be completed to the team’s standard, the team
+member responsible
+must either provide a clear explanation or take steps to improve and
+resubmit the work to
+meet the required quality.
+The steps outlined for raising and discussing concerns includes:
+\begin{enumerate}
+  \item Defining the root of the problem and describing the conflict.
+  \item Recognizing different viewpoints for all parties or areas
+    that lack mutual understanding.
+  \item Establishing a common goal.
+  \item Developing a plan that both parties can agree on, addressing
+    the main issue.
+  \item Agreeing on a plan of action to reach an agreement.
+  \item Having a postmortem (monitoring and following up on the resolution
+    progress) to
+    identify the actions leading up to the conflict.
+\end{enumerate}
+
+The leader and/or mediator must be an individual that is not involved
+with the conflict. They will ensure that everyone’s voices are heard,
+while making sure
+that there is an equal
+and balanced discussion. A space should be made where everyone’s
+voices are heard and
+respected in an equal manner that is fair to all. In addition, they
+must be empathetic about
+all parties involved, as well as understanding the situation, and
+willing to support both
+sides to work through the differences. Additionally, they must be
+approachable and
+respectful.
+\\
+
+\textbf{Responsibilities of Leader/Mediator:}
+\begin{itemize}
+  \item Coordinate meetings to discuss issues
+  \item Keep discussions productive and respectful to all parties
+  \item Document any key points and action items from the meetings
+    (meeting minutes)
+  \item Track progress of resolution and follow up with all parties
+\end{itemize}
+
+\subsection{Procedure for Handling Peer Feedback}
+\begin{itemize}
+  \item All feedback can be submitted directly to the team member
+    concerned either privately or as a team.
+
+  \item If there is a group concern, the whole team can hold a
+    behavior review and
+    address the concerns as a team.
+  \item Feedback should be constructive, respectful, and actionable.
+    Team members
+    should encourage focusing on specific behaviors, outcomes, or
+    suggestions for
+    improvement.
+  \item Ensure that feedback is objective, free of personal attacks,
+    and focuses on
+    actions, not personality.
+  \item Ensure that feedback includes both positive aspects (what went well) and
+    areas for growth.
+  \item Under no circumstances should feedback be disrespectful or inappropriate
+    to the person(s) receiving it. This includes but is not limited to, using
+    derogatory or insulting language, making personal attacks, or dismissing the
+    concerns of other members.
+  \item All feedback should be in written format (jot notes or
+    paragraphs) along with
+    suggestions for improvement. Feedback should be submitted to the
+    team members
+    at the mid-project evaluation and the end of project evaluation.
+  \item A team member receiving feedback should review said feedback and the
+    suggestions for improvement, implementing any needed changes by team
+    milestone check-ins and reviews.
+  \item The team, through a brief meeting, will hold team members
+    accountable for
+    implementing their constructive feedback. Team members will
+    support each other
+    in accomplishing their goals and taking care to address and
+    mitigate any concerns
+    or challenges.
+\end{itemize}
+
+\newpage
+\section{Team Contract Agreement}
+All team members are responsible for performing the required work
+outlined in each
+milestone honestly, without plagiarism and cheating. Submitting this
+work with my
+name and macID is a statement and understanding that this work is my own and
+adheres to the Academic Integrity Policy of McMaster University.
+If you agree to terms above, please sign below in the designated area by printing your full name:
+\begin{table}[]
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+    macID   & Full Name as Signature \\ \hline
+    fatimn8 & Nawaal Fatima          \\ \hline
+    lij499  &                        \\ \hline
+    bhuiyr2 &                        \\ \hline
+    gulats10&                        \\ \hline
+    \end{tabular}
+    \caption{Team Contract Agreement Signatures}
+    \label{tab:team-signatures}
+    \end{table}
 
 \end{document}
