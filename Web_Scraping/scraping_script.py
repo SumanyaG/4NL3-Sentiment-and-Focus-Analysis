@@ -16,8 +16,34 @@ output_file = "interviews.csv"
 csv_headers = ["event", "date", "person", "quote"]
 
 def fix_encoding(text):
-    text = text.replace('‚Äô', "'")
+    replacements = {
+        '‚Äô': "'",
+        'ÃÅ': 'é',
+        'Ãà': 'è',
+        'ÃÇ': 'ç',
+        'Ãˆ': 'è',
+        'Ã©': 'é',
+        'Ã¨': 'è',
+        'Ã«': 'ë',
+        'Ã®': 'î',
+        'Ã¯': 'ï',
+        'Ã´': 'ô',
+        'Ã¶': 'ö',
+        'Ã»': 'û',
+        'Ã¼': 'ü',
+        'Ã€': 'À',
+        'Ã‰': 'É',
+        'ÃŠ': 'Ê',
+        'Ã"': 'Ó',
+        'Ã"': 'Ô',
+        'Ã˜': 'Ø',
+    }
+
+    for wrong, right in replacements.items():
+        text = text.replace(wrong, right)
+
     text = unicodedata.normalize('NFKD', text)
+    text = re.sub(r'[^\x00-\x7F]+', '', text)
 
     return text
 
@@ -74,6 +100,8 @@ def clean_text(text):
     text = " ".join(text.split())
     text = re.sub(r'\s*Q\.\s*', '', text)
     text = fix_encoding(text)
+    text = re.sub(r'[^\w\s\.,!?\'"-]', '', text)
+    
     return text.strip()
 
 def is_question(text):
@@ -90,11 +118,24 @@ def is_question(text):
 def parse_speaker(text):
     speaker_pattern = r'^([A-Z][A-Za-z\s\'-]+(?:\s[A-Z][A-Za-z\'-]+)*):(.+)$'
     match = re.match(speaker_pattern, text)
-    if match:
-        speaker = match.group(1).strip()
-        content = match.group(2).strip()
-        return speaker, content
-    return None, None
+    
+    if not match:
+        return None, None 
+    
+    speaker = match.group(1).strip()
+    content = match.group(2).strip()
+
+    if len(speaker.split()) > 4:
+        return None, None
+    
+    if len(content) < 10:
+        return None, None
+    
+    invalid_words = ['THAT', 'THERE', 'EVERYONE', 'SOMEBODY', 'NOBODY', 'ANYONE', 'SOMETHING']
+    if any(word in speaker.upper().split() for word in invalid_words):
+        return None, None
+    
+    return speaker, content 
 
 def scrape_interview(interview_url):
     try:
