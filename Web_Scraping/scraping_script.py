@@ -11,8 +11,25 @@ event_urls = ["https://www.asapsports.com/show_events.php?event_id=196462&catego
 # URLs to ASAP Sports - WNBA Draft, WNBA Finals, NBA Draft, NBA Finals
 
 output_file = "interviews.csv"
-
 csv_headers = ["event", "date", "person", "quote"]
+
+def get_event_date_links(event_url):
+    try:
+        response = requests.get(event_url)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        event_date_links = []
+
+        for link in soup.find_all("a", href=True):
+            href = link["href"]
+            if "show_event.php" in href and "date=" in href and href.startswith("http"):
+                event_date_links.append(href)
+    
+        return event_date_links
+    
+    except Exception as e:
+        print(f"Error getting event date links from {event_url}: {e}")
+        return []
 
 def get_interview_links(event_url):
     try:
@@ -20,9 +37,11 @@ def get_interview_links(event_url):
         soup = BeautifulSoup(response.text, "html.parser")
 
         interview_links = []
+
         for link in soup.find_all("a", href=True):
+            href = link["href"]
             if "show_interview.php" in link["href"]:
-                full_url = "https://www.asapsports.com/" + link["href"] if not link["href"].startswith("http") else link["href"]
+                full_url = f"https://www.asapsports.com/{href}" if not href.startswith("http") else href
                 interview_links.append(full_url)
         
         return interview_links
@@ -51,20 +70,17 @@ def scrape_interview(interview_url):
         date = None
         for p in paragraphs[:3]:
             text = p.text.strip()
-            if not date and re.search(r'\b[A-Z][a-z]+ \d{1,2}, \d{4}\b', text):
-                date = text
+            date_match = re.search(r'\b[A-Z][a-z]+ \d{1,2}, \d{4}\b', text)
+            if date_match:
+                date = date_match.group()
+                break
 
         data = []
         current_person = None
-        current_question = None
 
         for p in paragraphs:
             text = p.text.strip()
             if not text:
-                continue
-        
-            if p.find("b") and "Q." in p.text:
-                current_question = clean_text(p.text)
                 continue
 
             speaker_match = re.match(r'^([A-Z\s]+):\s*(.+)$', text)
@@ -102,12 +118,14 @@ def main():
 
             for event_url in event_urls:
                 print(f"Processing event: {event_url}")
-                interview_links = get_interview_links(event_url)
+                event_date_links = get_event_date_links(event_url)
 
-                for interview_url in interview_links:
-                    print(f"Scraping interview: {interview_url}")
-                    rows = scrape_interview(interview_url)
-                    writer.writerows(rows)
+                for event_date_url in event_date_links:
+                    interview_links = get_interview_links(event_date_url)
+
+                    for interview_url in interview_links:
+                        rows = scrape_interview(interview_url)
+                        writer.writerows(rows)
 
         print(f"Data saved to {output_file}")
     
