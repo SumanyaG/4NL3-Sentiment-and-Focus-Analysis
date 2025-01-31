@@ -5,14 +5,29 @@ import re
 from datetime import datetime
 import unicodedata
 
-event_urls = ["https://www.asapsports.com/show_events.php?event_id=196462&category=11&year=2024&title=WNBA+DRAFT", 
+event_urls = [
+              "https://www.asapsports.com/show_events.php?event_id=196462&category=11&year=2024&title=WNBA+DRAFT", 
               "https://www.asapsports.com/show_events.php?event_id=202524&category=11&year=2024&title=WNBA+FINALS%3A+MINNESOTA+VS.+NEW+YORK",
               "https://www.asapsports.com/show_events.php?event_id=198609&category=11&year=2024&title=NBA+DRAFT",
-              "https://www.asapsports.com/show_events.php?event_id=198318&category=11&year=2024&title=NBA+FINALS%3A+CELTICS+VS.+MAVERICKS"] 
+              "https://www.asapsports.com/show_events.php?event_id=198318&category=11&year=2024&title=NBA+FINALS%3A+CELTICS+VS.+MAVERICKS",
+              "https://www.asapsports.com/show_events.php?event_id=194233&category=11&year=2024&title=NBA+ALL-STAR+MEDIA+DAY",
+              "https://www.asapsports.com/show_events.php?event_id=194244&category=11&year=2024&title=NBA+ALL-STAR+SKILLS+CHALLENGE",
+              "https://www.asapsports.com/show_events.php?event_id=194245&category=11&year=2024&title=NBA+ALL-STAR+3-POINT+CONTEST",
+              "https://www.asapsports.com/show_events.php?event_id=194249&category=11&year=2024&title=NBA+ALL-STAR+SLAM+DUNK",
+              "https://www.asapsports.com/show_events.php?event_id=194208&category=11&year=2024&title=NBA+ALL-STAR+RISING+STARS+PRACTICE",
+              "https://www.asapsports.com/show_events.php?event_id=194219&category=11&year=2024&title=NBA+ALL-STAR+RISING+STARS+POSTGAME",
+              "https://www.asapsports.com/show_events.php?event_id=203527&category=11&year=2024&title=EMIRATES+NBA+CUP",
+              "https://www.asapsports.com/show_events.php?event_id=203296&category=11&year=2024&title=PLAYERS+ERA+POWER+COLLEGE+BASKETBALL+TOURNAMENT",
+              "https://www.asapsports.com/show_events.php?event_id=203278&category=11&year=2024&title=MAUI+INVITATIONAL+PRESENTED+BY+NOVAVAX",
+              "https://www.asapsports.com/show_events.php?event_id=202969&category=11&year=2024&title=STATE+FARM+CHAMPIONS+CLASSIC%3A+MICHIGAN+STATE+VS+KANSAS",
+              "https://www.asapsports.com/show_events.php?event_id=196163&category=11&year=2024&title=NCAA+WOMEN%27S+BASKETBALL+CHAMPIONSHIP+FINAL+FOUR%3A+SOUTH+CAROLINA+VS+IOWA"
+            ]
 
-# URLs to ASAP Sports - WNBA Draft, WNBA Finals, NBA Draft, NBA Finals
+# URLs to ASAP Sports - WNBA Draft, WNBA Finals, NBA Draft, NBA Finals, NBA All-Star Media Day, NBA All-Star Skills Challenge, NBA All-Star 3-Point 
+# Contest, NBA All-Star Slam Dunk, NBA All-Star Rising Stars Practice, NBA All-Star Rising Stars Postgame, Emirates NBA Cup, Players Era Power 
+# College Tournament, Maui Invitational, State Farm Championships Classic: Michigan State VS Kansas, NCAA Final Four: South Carolina VS Iowa
 
-output_file = "interviews.csv"
+output_file = "interviews_separated.csv"
 csv_headers = ["event", "date", "person", "quote"]
 
 def fix_encoding(text):
@@ -101,7 +116,7 @@ def clean_text(text):
     text = re.sub(r'\s*Q\.\s*', '', text)
     text = fix_encoding(text)
     text = re.sub(r'[^\w\s\.,!?\'"-]', '', text)
-    
+
     return text.strip()
 
 def is_question(text):
@@ -163,6 +178,30 @@ def scrape_interview(interview_url):
             text = fix_encoding(text)
 
             if p.find("b") or is_question(text):
+                in_question = True
+                continue
+
+            speaker, content = parse_speaker(text)
+            if speaker:
+                current_person = speaker
+                if content:
+                    data.append([
+                        event_name,
+                        date,
+                        current_person,
+                        clean_text(content)
+                    ])
+                in_question = False
+            elif current_person and not in_question:
+                data.append([
+                    event_name,
+                    date,
+                    current_person,
+                    clean_text(text)
+                ])
+
+            # Required for when paragraphs need to be accumulated
+            '''if p.find("b") or is_question(text):
                 if current_person and current_text:
                     combined_text = clean_text(" ".join(current_text))
                     data.append([event_name, date, current_person, combined_text])
@@ -184,9 +223,10 @@ def scrape_interview(interview_url):
 
         if current_person and current_text and not in_question:
             combined_text = clean_text(" ".join(current_text))
-            data.append([event_name, date, current_person, combined_text])
+            data.append([event_name, date, current_person, combined_text])'''
 
         return data
+    
     except Exception as e:
         print(f"Error scraping interview {interview_url}: {e}")
         return []
