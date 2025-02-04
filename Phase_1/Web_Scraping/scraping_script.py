@@ -9,14 +9,12 @@ event_urls = [
               "https://www.asapsports.com/show_events.php?event_id=196462&category=11&year=2024&title=WNBA+DRAFT", 
               "https://www.asapsports.com/show_events.php?event_id=202524&category=11&year=2024&title=WNBA+FINALS%3A+MINNESOTA+VS.+NEW+YORK",
               "https://www.asapsports.com/show_events.php?event_id=198609&category=11&year=2024&title=NBA+DRAFT",
-              "https://www.asapsports.com/show_events.php?event_id=198318&category=11&year=2024&title=NBA+FINALS%3A+CELTICS+VS.+MAVERICKS",
-              "https://www.asapsports.com/show_events.php?event_id=188530&category=11&year=2023&title=NBA+DRAFT",
-              "https://www.asapsports.com/show_events.php?event_id=186360&category=11&year=2023&title=WNBA+DRAFT",
-              "https://www.asapsports.com/show_events.php?event_id=188216&category=11&year=2023&title=NBA+FINALS%3A+HEAT+VS.+NUGGETS",
-              "https://www.asapsports.com/show_events.php?event_id=177701&category=11&year=2022&title=NBA+DRAFT"
+              "https://www.asapsports.com/show_events.php?event_id=194257&category=11&year=2024&title=ALL-STAR+GAME",
+              "https://www.asapsports.com/show_events.php?event_id=194233&category=11&year=2024&title=NBA+ALL-STAR+MEDIA+DAY",
+              "https://www.asapsports.com/show_events.php?event_id=194208&category=11&year=2024&title=NBA+ALL-STAR+RISING+STARS+PRACTICE"
             ]
 
-# URLs to ASAP Sports - 2024 WNBA Draft, 2024 WNBA Finals, 2024 NBA Draft, 2024 NBA Finals, 2023 NBA Draft, 2023 WNBA Draft, 2024 NBA Finals, 2022 NBA Draft.
+# URLs to ASAP Sports - 2024 WNBA Draft, 2024 WNBA Finals, 2024 NBA Draft, 2024 NBA All Star Game, 2024 All Star Media Day and 2024 All Star Rising Stars Practice
 
 output_file = "interviews.csv"
 csv_headers = ["event", "date", "person", "quote"]
