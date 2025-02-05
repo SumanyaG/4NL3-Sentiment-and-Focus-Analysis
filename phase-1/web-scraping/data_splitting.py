@@ -45,7 +45,7 @@ def save_overlap_data(overlap_data, output_file):
 
 
 def main():
-    input_file = "/Users/sg/Desktop/courses/winter-2025/4nl3/4NL3-group-project/Web_Scraping/interviews.csv"
+    input_file = "/Users/sg/Desktop/courses/winter-2025/4nl3/4NL3-group-project/Phase_1/Web_Scraping/interviews.csv"
     output_prefix = "interview"
     overlap_output_file = "overlap_data.csv"
     
