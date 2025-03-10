@@ -11,12 +11,22 @@ def load_data(input_file):
 
 
 def cohen_kappa():
-    # Step 1: Import data from compiled annotation
+    # import data from overlap and full annotations
     abs_path = os.path.dirname(__file__)
-    rel_path = "compiled_annotations.csv"
-    input_file = os.path.join(abs_path, rel_path)
-    df = load_data(input_file)
-    print(df)
+    full_file = "compiled_annotations.csv"
+    overlap_file = "overlap_data.csv"
+    df_full = load_data(os.path.join(abs_path, full_file))
+    df_overlap = load_data(os.path.join(abs_path, overlap_file))
+
+    overlap = df_full.loc[(df_full['event'].isin(df_overlap['event'])) & 
+                          (df_full['date'].isin(df_overlap['date'])) & 
+                          (df_full['person'].isin(df_overlap['person'])) & 
+                          (df_full['quote'].isin(df_overlap['quote']))]
+    print(overlap)
+
+    #for index,row in df_full.iterrows():
+    #    
+    #    print(row['person'], row['quote'])
     
     # Step 2: Isolate for overlapped data
 
