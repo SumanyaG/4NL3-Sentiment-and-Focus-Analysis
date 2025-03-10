@@ -18,10 +18,8 @@ def cohen_kappa():
     df_full = load_data(os.path.join(abs_path, full_file))
     df_overlap = load_data(os.path.join(abs_path, overlap_file))
 
-    overlap = df_full.loc[(df_full['event'].isin(df_overlap['event'])) & 
-                          (df_full['date'].isin(df_overlap['date'])) & 
-                          (df_full['person'].isin(df_overlap['person'])) & 
-                          (df_full['quote'].isin(df_overlap['quote']))]
+    # gets the overlapped data from full annotations
+    overlap = df_full.loc[(df_full['quote'].isin(df_overlap['quote']))]
     print(overlap)
 
     #for index,row in df_full.iterrows():
