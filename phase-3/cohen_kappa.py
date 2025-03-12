@@ -9,35 +9,68 @@ def load_data(input_file):
     df = pd.read_csv(input_file)
     return df
 
+# Method for extracting duplicates from the dataset
+def extract_duplicates(full_data):
+    # First extract the quotes as they are mostly unique
+    quotes = {}
+    for idx, row in full_data.iterrows():
+        quote = row['quote']
+        quote = quote.replace('"', '')
+        quotes[idx] = quote
+
+    # keep track of repeated dictionary values
+    # make sure that the duplications have both original and duplication
+    entries = {}
+    duplications = {}
+    for idx,quote in quotes.items():
+        if quote in entries.values():
+            orig_id = [key for key, val in entries.items() if quote == val][0]
+            duplications[orig_id] = quote
+            duplications[idx] = quote
+        else:
+            entries[idx] = quote
+    
+    return duplications
+
 
 def cohen_kappa():
     # import data from overlap and full annotations
     abs_path = os.path.dirname(__file__)
     full_file = "compiled_annotations.csv"
-    overlap_file = "overlap_data.csv"
     df_full = load_data(os.path.join(abs_path, full_file))
-    df_overlap = load_data(os.path.join(abs_path, overlap_file))
 
-    # gets the overlapped data from full annotations
-    overlap = df_full.loc[(df_full['quote'].isin(df_overlap['quote']))]
-    print(overlap)
+    # get the duplicated quotes
+    duplicates = extract_duplicates(df_full)
 
-    #for index,row in df_full.iterrows():
-    #    
-    #    print(row['person'], row['quote'])
-    
-    # Step 2: Isolate for overlapped data
+    # create the 2 sets of 4 ratings based on agreement
+    pos_rater_1 = []
+    pos_rater_2 = []
+    team_rater_1 = []
+    team_rater_2 = []
 
-    # Step 3: Create two arrays for the overlapped data
+    # work through the keys and alternate between orig and dup
+    keys = duplicates.keys()
+    dup = True
 
-    # Step 4: Calculate Cohen-Kappa Score
+    for key in keys:
+        if dup:           
+            # append to rater 2
+            pos_rater_2.append(int(np.nan_to_num(df_full.loc[key, 'Positive?'])))
+            team_rater_2.append(int(np.nan_to_num(df_full.loc[key, 'Team?'])))
+            dup = False
+        else:
+            # append to rater 1
+            pos_rater_1.append(int(np.nan_to_num(df_full.loc[key, 'Positive?'])))
+            team_rater_1.append(int(np.nan_to_num(df_full.loc[key, 'Team?'])))
+            dup = True
 
-    #define array of ratings for both raters
-    rater1 = [0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0]
-    rater2 = [0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0]
+    # calculate and print the 4 Cohen-Kappa Scores
+    kappa_pos_neg = cohen_kappa_score(pos_rater_1, pos_rater_2)
+    kappa_team_ind = cohen_kappa_score(team_rater_1, team_rater_2)
 
-    #calculate Cohen's Kappa
-    print(cohen_kappa_score(rater1, rater2))
+    # Print out the scores
+    print("Positive-Negative Cohen-Kappa Score: ", kappa_pos_neg)
+    print("Team-Individual Cohen-Kappa Score: ", kappa_team_ind)
 
 if __name__ == "__main__":
     cohen_kappa()
