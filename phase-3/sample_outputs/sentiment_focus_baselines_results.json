@@ -1,0 +1,36 @@
+{
+    "sentiment": {
+        "Logistic_Regression": {
+            "accuracy": 0.8809523809523809,
+            "f1_score": 0.8251959011452683
+        },
+        "Random_Forest": {
+            "accuracy": 0.873015873015873,
+            "f1_score": 0.8212267958030669
+        },
+        "Neural_Network": {
+            "accuracy": 0.8611111111111112,
+            "f1_score": 0.8472004186289902
+        }
+    },
+    "focus": {
+        "Logistic_Regression": {
+            "accuracy": 0.7857142857142857,
+            "f1_score": 0.7825028623556023
+        },
+        "Random_Forest": {
+            "accuracy": 0.7738095238095238,
+            "f1_score": 0.7664724554000333
+        },
+        "Neural_Network": {
+            "accuracy": 0.7023809523809523,
+            "f1_score": 0.7012794543436216
+        }
+    },
+    "baselines": {
+        "random_baseline_accuracy_sentiment": 0.5119047619047619,
+        "majority_baseline_accuracy_sentiment": 0.8809523809523809,
+        "random_baseline_accuracy_focus": 0.46825396825396826,
+        "majority_baseline_accuracy_focus": 0.5515873015873016
+    }
+}
