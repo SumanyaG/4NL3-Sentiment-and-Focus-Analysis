@@ -36,8 +36,7 @@ def extract_duplicates():
         dups.append(df_full.loc[key])
 
     dup_data = pd.DataFrame(dups)
-
-    # print to a csv
+    #print to a csv
     dup_data.to_csv("duplicate_data.csv", sep=",")
 
 if __name__ == "__main__":
