@@ -1,0 +1,32 @@
+{
+    "sentiment": {
+        "labels": {
+            "Positive": 1,
+            "Negative": 0
+        },
+        "results": {
+            "Neural_Network": {
+                "accuracy": 0.9014084507042254,
+                "f1_score": 0.8813771517996871
+            }
+        }
+    },
+    "focus": {
+        "labels": {
+            "Team": 1,
+            "Individual": 0
+        },
+        "results": {
+            "Neural_Network": {
+                "accuracy": 0.5915492957746479,
+                "f1_score": 0.5834896624284112
+            }
+        }
+    },
+    "baselines": {
+        "majority_baseline_accuracy_sentiment": 0.9295774647887324,
+        "majority_baseline_f1_sentiment": 0.8956512799424283,
+        "majority_baseline_accuracy_focus": 0.676056338028169,
+        "majority_baseline_f1_focus": 0.5453899869807078
+    }
+}
